@@ -2,13 +2,11 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "my-app",
   "main": "src/index.ts",
-  "compatibility_date": "2026-11-15"
+  "compatibility_date": "2026-11-15",
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
-  // "vars": {
-  //   "MY_VAR": "my-variable"
-  // },
+  "vars": { "FRONTEND_DEV_URL": "http://localhost:5173" }
   // "kv_namespaces": [
   //   {
   //     "binding": "MY_KV_NAMESPACE",

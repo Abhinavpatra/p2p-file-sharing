@@ -1,9 +1,21 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import { cors } from "hono/cors";
 
-const app = new Hono()
+type Env = {
+  FRONTEND_DEV_URL: string;
+};
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+const app = new Hono<{ Bindings: Env }>();
+app.use("*", (c, next) => cors({ origin: c.env.FRONTEND_DEV_URL })(c, next));
 
-export default app
+app.get("/", (c) => {
+  console.log("hello");
+  return c.text("Hello Hono!");
+});
+
+app.get("/con", (c) => {
+  console.log("hello");
+  return c.text("Hello con!");
+});
+
+export default app;
